@@ -11,13 +11,13 @@ import {
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-const NAV = [
+const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }> = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/clients", label: "Clients", icon: Users },
   { to: "/deadlines", label: "Deadlines", icon: CalendarClock },
   { to: "/documents", label: "Documents", icon: FileText },
   { to: "/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
