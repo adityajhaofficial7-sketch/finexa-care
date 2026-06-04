@@ -30,10 +30,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar — desktop only */}
       <aside
-        className={cn(
-          "fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground md:flex",
-          mobileOpen ? "flex" : "hidden",
-        )}
+        className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground md:flex"
       >
         <div className="flex h-14 items-center border-b border-sidebar-border px-5">
           <span className="text-base font-semibold tracking-tight text-sidebar-primary-foreground">
