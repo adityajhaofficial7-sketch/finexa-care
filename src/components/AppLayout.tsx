@@ -7,7 +7,7 @@ import {
   Settings,
   UserCircle2,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }> = [
