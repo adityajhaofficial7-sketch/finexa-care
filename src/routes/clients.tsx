@@ -43,26 +43,26 @@ function ClientsPage() {
       </div>
 
       <div className="overflow-x-auto border border-border bg-card">
-        <table className="w-full min-w-[900px] border-collapse text-sm">
+        <table className="w-full min-w-[900px] border-collapse text-[14px]">
           <thead>
             <tr className="border-b border-border bg-secondary text-left text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              <th className="px-4 py-3">Client Name</th>
-              <th className="px-4 py-3">GSTIN</th>
-              <th className="px-4 py-3">Phone</th>
-              <th className="px-4 py-3">Business Type</th>
-              <th className="px-4 py-3">Compliances</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3 text-right">Actions</th>
+              <th className="px-5 py-4">Client Name</th>
+              <th className="px-5 py-4">GSTIN</th>
+              <th className="px-5 py-4">Phone</th>
+              <th className="px-5 py-4">Business Type</th>
+              <th className="px-5 py-4">Compliances</th>
+              <th className="px-5 py-4">Status</th>
+              <th className="px-5 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-border">
             {clients.map((c) => (
-              <tr key={c.id} className="border-b border-border last:border-0 hover:bg-secondary/50">
-                <td className="px-4 py-3 font-medium text-foreground">{c.name}</td>
-                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{c.gstin}</td>
-                <td className="px-4 py-3 text-muted-foreground">{c.phone}</td>
-                <td className="px-4 py-3">{c.businessType}</td>
-                <td className="px-4 py-3">
+              <tr key={c.id} className="hover:bg-secondary/50">
+                <td className="px-5 py-5 font-medium text-foreground">{c.name}</td>
+                <td className="px-5 py-5 font-mono text-[12px] text-muted-foreground">{c.gstin}</td>
+                <td className="px-5 py-5 text-muted-foreground">{c.phone}</td>
+                <td className="px-5 py-5">{c.businessType}</td>
+                <td className="px-5 py-5">
                   <div className="flex flex-wrap gap-1">
                     {c.compliances.map((t) => (
                       <span key={t} className="border border-border bg-secondary px-2 py-0.5 text-[11px] text-secondary-foreground">
@@ -71,16 +71,16 @@ function ClientsPage() {
                     ))}
                   </div>
                 </td>
-                <td className="px-4 py-3">
+                <td className="px-5 py-5">
                   <span className={cn(
-                    "inline-flex items-center px-2 py-1 text-[11px] font-semibold uppercase",
+                    "inline-flex items-center px-2.5 py-1.5 text-[11px] font-semibold uppercase",
                     c.status === "Active" ? "bg-status-filed text-primary-foreground" : "bg-muted text-muted-foreground",
                   )}>
                     {c.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-right">
-                  <button className="inline-flex items-center gap-1 border border-border bg-card px-2.5 py-1 text-xs text-foreground hover:bg-secondary">
+                <td className="px-5 py-5 text-right">
+                  <button className="inline-flex items-center gap-1 border border-border bg-card px-2.5 py-1 text-[12px] text-foreground hover:bg-secondary">
                     <Pencil className="h-3 w-3" />
                     Edit
                   </button>
