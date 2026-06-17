@@ -44,6 +44,8 @@ Rules:
       });
 
       if (!res.ok) {
+        const body = await res.text().catch(() => "");
+        console.error("askAdivin gateway error", res.status, body);
         if (res.status === 429) return { text: "", error: "Rate limit hit. Try again shortly." };
         if (res.status === 402) return { text: "", error: "AI credits exhausted." };
         return { text: "", error: `AI service error (${res.status}).` };
