@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { CalendarClock, AlertTriangle, FileText } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
 import { AppStoreProvider, useAppStore } from "@/store/app-store";
 import { ComplianceTable } from "@/components/ComplianceTable";
@@ -63,6 +64,10 @@ function Dashboard() {
         <StatCard label="Due This Week" value={stats.dueWeek} tone="due" />
         <StatCard label="Filed This Month" value={stats.filed} tone="filed" />
       </div>
+
+      <WidgetsRow compliances={compliances} />
+
+
 
       <section>
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
