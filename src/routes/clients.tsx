@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppLayout } from "@/components/AppLayout";
 import { AppStoreProvider, useAppStore } from "@/store/app-store";
@@ -58,7 +58,11 @@ function ClientsPage() {
           <tbody className="divide-y divide-border">
             {clients.map((c) => (
               <tr key={c.id} className="hover:bg-secondary/50">
-                <td className="px-5 py-5 font-medium text-foreground">{c.name}</td>
+                <td className="px-5 py-5 font-medium text-foreground">
+                  <Link to="/clients/$clientId" params={{ clientId: c.id }} className="hover:text-accent hover:underline">
+                    {c.name}
+                  </Link>
+                </td>
                 <td className="px-5 py-5 font-mono text-[12px] text-muted-foreground">{c.gstin}</td>
                 <td className="px-5 py-5 text-muted-foreground">{c.phone}</td>
                 <td className="px-5 py-5">{c.businessType}</td>
@@ -80,10 +84,14 @@ function ClientsPage() {
                   </span>
                 </td>
                 <td className="px-5 py-5 text-right">
-                  <button className="inline-flex items-center gap-1 border border-border bg-card px-2.5 py-1 text-[12px] text-foreground hover:bg-secondary">
+                  <Link
+                    to="/clients/$clientId"
+                    params={{ clientId: c.id }}
+                    className="inline-flex items-center gap-1 border border-border bg-card px-2.5 py-1 text-[12px] text-foreground hover:bg-secondary"
+                  >
                     <Pencil className="h-3 w-3" />
-                    Edit
-                  </button>
+                    View
+                  </Link>
                 </td>
               </tr>
             ))}

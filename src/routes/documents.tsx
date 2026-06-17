@@ -138,7 +138,14 @@ function GenerateModal({ doc, onClose }: { doc: DocTemplate; onClose: () => void
         },
       });
       if (res.error) setError(res.error);
-      else setOutput(res.text);
+      else {
+        setOutput(res.text);
+        if (typeof window !== "undefined") {
+          const key = `adivin:docs:${new Date().getFullYear()}-${new Date().getMonth() + 1}`;
+          const cur = parseInt(window.localStorage.getItem(key) ?? "0", 10) || 0;
+          window.localStorage.setItem(key, String(cur + 1));
+        }
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unknown error");
     } finally {
