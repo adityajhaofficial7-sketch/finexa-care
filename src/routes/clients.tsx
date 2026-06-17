@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
-      { title: "Clients — Finexa" },
+      { title: "Clients — Adivin" },
       { name: "description", content: "Manage your client roster, GSTINs, and compliance assignments." },
     ],
   }),

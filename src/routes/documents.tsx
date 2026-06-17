@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/documents")({
   head: () => ({
     meta: [
-      { title: "Documents — Finexa" },
+      { title: "Documents — Adivin" },
       { name: "description", content: "Generate CA documents in seconds." },
     ],
   }),
