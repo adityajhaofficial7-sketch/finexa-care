@@ -8,9 +8,13 @@ import {
   UserCircle2,
   Menu,
   X,
+  Search,
+  Sparkles,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "@/components/CommandPalette";
+import { AiAssistant } from "@/components/AiAssistant";
 
 const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }> = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -25,6 +29,8 @@ const BOTTOM_NAV = NAV.slice(0, 3);
 export function AppLayout({ children }: { children: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [assistantOpen, setAssistantOpen] = useState(false);
 
   const isActive = (to: string, exact?: boolean) =>
     exact ? path === to : path === to || path.startsWith(to + "/");
@@ -112,8 +118,30 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <Menu className="h-5 w-5" />
             </button>
             <span className="text-sm font-semibold text-primary md:hidden">Finexa</span>
+            <button
+              onClick={() => setPaletteOpen(true)}
+              className="hidden md:inline-flex items-center gap-2 border border-border bg-background px-3 py-1.5 text-xs text-muted-foreground hover:border-accent hover:text-foreground"
+            >
+              <Search className="h-3.5 w-3.5" />
+              Search…
+              <kbd className="ml-2 border border-border bg-secondary px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
+            </button>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setAssistantOpen(true)}
+              className="inline-flex items-center gap-1.5 border border-primary bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-accent hover:border-accent"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Ask Adivin</span>
+            </button>
+            <button
+              onClick={() => setPaletteOpen(true)}
+              className="md:hidden flex h-9 w-9 items-center justify-center border border-border bg-secondary text-primary"
+              aria-label="Search"
+            >
+              <Search className="h-4 w-4" />
+            </button>
             <div className="text-right leading-tight hidden sm:block">
               <div className="text-sm font-semibold text-foreground">Mehta & Associates</div>
               <div className="text-[11px] text-muted-foreground">Chartered Accountants</div>
