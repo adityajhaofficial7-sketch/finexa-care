@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { CalendarClock, AlertTriangle, FileText } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
 import { AppStoreProvider, useAppStore } from "@/store/app-store";
 import { ComplianceTable } from "@/components/ComplianceTable";
@@ -64,6 +65,10 @@ function Dashboard() {
         <StatCard label="Filed This Month" value={stats.filed} tone="filed" />
       </div>
 
+      <WidgetsRow compliances={compliances} />
+
+
+
       <section>
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -119,6 +124,59 @@ function StatCard({
     <div className={cn("border p-5", styles)}>
       <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</div>
       <div className={cn("mt-2 text-3xl font-semibold tabular-nums", valueColor)}>{value}</div>
+    </div>
+  );
+}
+
+function WidgetsRow({ compliances }: { compliances: ReturnType<typeof useAppStore>["compliances"] }) {
+  const thisWeek = compliances.filter((c) => c.daysLeft >= 0 && c.daysLeft <= 7).length;
+  const overdue = compliances.filter((c) => c.status === "OVERDUE").length;
+  const [docsThisMonth, setDocsThisMonth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const key = `adivin:docs:${new Date().getFullYear()}-${new Date().getMonth() + 1}`;
+    const raw = window.localStorage.getItem(key);
+    setDocsThisMonth(raw ? parseInt(raw, 10) || 0 : 0);
+  }, []);
+
+  return (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <Widget icon={CalendarClock} label="This Week" value={thisWeek} hint="deadlines in next 7 days" tone="due" />
+      <Widget icon={AlertTriangle} label="Overdue" value={overdue} hint="needs attention now" tone="overdue" />
+      <Widget icon={FileText} label="Documents This Month" value={docsThisMonth} hint="generated via AI" tone="filed" />
+    </div>
+  );
+}
+
+function Widget({
+  icon: Icon,
+  label,
+  value,
+  hint,
+  tone,
+}: {
+  icon: typeof CalendarClock;
+  label: string;
+  value: number;
+  hint: string;
+  tone: "due" | "overdue" | "filed";
+}) {
+  const accent = {
+    due: "text-status-due",
+    overdue: "text-status-overdue",
+    filed: "text-status-filed",
+  }[tone];
+  return (
+    <div className="flex items-center gap-4 border border-border bg-card px-4 py-3">
+      <div className={cn("flex h-9 w-9 items-center justify-center bg-secondary", accent)}>
+        <Icon className="h-4 w-4" />
+      </div>
+      <div className="flex-1">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{label}</div>
+        <div className="text-[11px] text-muted-foreground">{hint}</div>
+      </div>
+      <div className={cn("text-2xl font-semibold tabular-nums", accent)}>{value}</div>
     </div>
   );
 }
