@@ -39,10 +39,10 @@ export function AppLayout({ children }: { children: ReactNode }) {
       <div className="flex h-14 items-center justify-between border-b border-sidebar-border px-5">
         <div className="flex items-center">
           <span className="text-base font-semibold tracking-tight text-sidebar-primary-foreground">
-            ClearDesk
+            Finexa
           </span>
           <span className="ml-2 text-[10px] uppercase tracking-widest text-sidebar-foreground/60">
-            Finexa
+            Adivin
           </span>
         </div>
         <button
@@ -111,7 +111,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
             >
               <Menu className="h-5 w-5" />
             </button>
-            <span className="text-sm font-semibold text-primary md:hidden">ClearDesk</span>
+            <span className="text-sm font-semibold text-primary md:hidden">Finexa</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-right leading-tight hidden sm:block">

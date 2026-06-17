@@ -5,7 +5,7 @@ import { AppStoreProvider } from "@/store/app-store";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — Finexa" },
+      { title: "Settings — Adivin" },
       { name: "description", content: "Firm profile, notifications, and preferences." },
     ],
   }),

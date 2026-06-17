@@ -9,7 +9,7 @@ import type { ComplianceRow, ComplianceStatus } from "@/data/clients";
 export const Route = createFileRoute("/deadlines")({
   head: () => ({
     meta: [
-      { title: "Deadlines — Finexa" },
+      { title: "Deadlines — Adivin" },
       { name: "description", content: "Calendar of upcoming GST, TDS, ITR, and ROC deadlines." },
     ],
   }),

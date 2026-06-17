@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Finexa | Mehta & Associates" },
+      { title: "Dashboard — Adivin | Mehta & Associates" },
       { name: "description", content: "Compliance overview, deadlines, and client filings for your CA practice." },
     ],
   }),
