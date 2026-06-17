@@ -177,6 +177,9 @@ export function AppLayout({ children }: { children: ReactNode }) {
           })}
         </div>
       </nav>
+
+      <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
+      <AiAssistant open={assistantOpen} onClose={() => setAssistantOpen(false)} />
     </div>
   );
 }
