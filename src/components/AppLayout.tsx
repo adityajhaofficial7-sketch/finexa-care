@@ -15,6 +15,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { CommandPalette } from "@/components/CommandPalette";
 import { AiAssistant } from "@/components/AiAssistant";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }> = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -142,6 +143,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
             >
               <Search className="h-4 w-4" />
             </button>
+            <ThemeToggle />
             <div className="text-right leading-tight hidden sm:block">
               <div className="text-sm font-semibold text-foreground">Mehta & Associates</div>
               <div className="text-[11px] text-muted-foreground">Chartered Accountants</div>
