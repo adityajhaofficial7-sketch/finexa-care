@@ -1,6 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { AppLayout } from "@/components/AppLayout";
-import { AppStoreProvider, useAppStore } from "@/store/app-store";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useAppStore } from "@/store/app-store";
 import { ArrowLeft, Building2, Mail, Phone, FileText, CalendarClock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -12,13 +11,7 @@ export const Route = createFileRoute("/clients/$clientId")({
       { name: "description", content: "Client overview, compliance timeline, and notes." },
     ],
   }),
-  component: () => (
-    <AppStoreProvider>
-      <AppLayout>
-        <ClientDetailPage />
-      </AppLayout>
-    </AppStoreProvider>
-  ),
+  component: ClientDetailPage,
 });
 
 function ClientDetailPage() {
@@ -27,8 +20,16 @@ function ClientDetailPage() {
   const client = clients.find((c) => c.id === clientId);
 
   if (!client) {
-    // soft not-found within layout
-    throw notFound();
+    return (
+      <div className="space-y-4">
+        <Link to="/clients" className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground">
+          <ArrowLeft className="h-3.5 w-3.5" /> Back to clients
+        </Link>
+        <div className="border border-border bg-card p-10 text-center text-sm text-muted-foreground">
+          Client not found.
+        </div>
+      </div>
+    );
   }
 
   const clientCompliances = compliances.filter((r) => r.clientName === client.name);
