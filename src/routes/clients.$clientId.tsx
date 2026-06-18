@@ -1,6 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { AppLayout } from "@/components/AppLayout";
-import { AppStoreProvider, useAppStore } from "@/store/app-store";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useAppStore } from "@/store/app-store";
 import { ArrowLeft, Building2, Mail, Phone, FileText, CalendarClock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -12,13 +11,7 @@ export const Route = createFileRoute("/clients/$clientId")({
       { name: "description", content: "Client overview, compliance timeline, and notes." },
     ],
   }),
-  component: () => (
-    <AppStoreProvider>
-      <AppLayout>
-        <ClientDetailPage />
-      </AppLayout>
-    </AppStoreProvider>
-  ),
+  component: ClientDetailPage,
 });
 
 function ClientDetailPage() {
