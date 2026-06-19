@@ -8,7 +8,7 @@ import { CATEGORIES, DOCUMENTS, type DocTemplate } from "@/data/documents";
 import { generateDocument } from "@/lib/generate-document.functions";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/documents")({
+export const Route = createFileRoute("/_authenticated/documents")({
   head: () => ({
     meta: [
       { title: "Documents — Adivin" },

@@ -14,7 +14,181 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      clients: {
+        Row: {
+          business_type: string
+          compliances: string[]
+          created_at: string
+          email: string | null
+          gstin: string | null
+          id: string
+          name: string
+          phone: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          business_type?: string
+          compliances?: string[]
+          created_at?: string
+          email?: string | null
+          gstin?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          business_type?: string
+          compliances?: string[]
+          created_at?: string
+          email?: string | null
+          gstin?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      compliances: {
+        Row: {
+          client_id: string
+          compliance_type: string
+          created_at: string
+          due_date: string
+          id: string
+          notes: string | null
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          client_id: string
+          compliance_type: string
+          created_at?: string
+          due_date: string
+          id?: string
+          notes?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          client_id?: string
+          compliance_type?: string
+          created_at?: string
+          due_date?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "compliances_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notification_preferences: {
+        Row: {
+          daily_digest_enabled: boolean
+          days_before: number
+          email_enabled: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          daily_digest_enabled?: boolean
+          days_before?: number
+          email_enabled?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          daily_digest_enabled?: boolean
+          days_before?: number
+          email_enabled?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          firm_name: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          firm_name?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          firm_name?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reminder_log: {
+        Row: {
+          compliance_id: string
+          id: string
+          kind: string
+          reminder_for: string
+          sent_at: string
+          user_id: string
+        }
+        Insert: {
+          compliance_id: string
+          id?: string
+          kind?: string
+          reminder_for: string
+          sent_at?: string
+          user_id: string
+        }
+        Update: {
+          compliance_id?: string
+          id?: string
+          kind?: string
+          reminder_for?: string
+          sent_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reminder_log_compliance_id_fkey"
+            columns: ["compliance_id"]
+            isOneToOne: false
+            referencedRelation: "compliances"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

@@ -5,7 +5,7 @@ import { BUSINESS_TYPES, COMPLIANCE_OPTIONS, type Client } from "@/data/clients"
 import { Plus, X, Pencil } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/clients/")({
+export const Route = createFileRoute("/_authenticated/clients/")({
   head: () => ({
     meta: [
       { title: "Clients — Adivin" },

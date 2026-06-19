@@ -4,7 +4,7 @@ import { ArrowLeft, Building2, Mail, Phone, FileText, CalendarClock } from "luci
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
-export const Route = createFileRoute("/clients/$clientId")({
+export const Route = createFileRoute("/_authenticated/clients/$clientId")({
   head: () => ({
     meta: [
       { title: "Client — Adivin" },
