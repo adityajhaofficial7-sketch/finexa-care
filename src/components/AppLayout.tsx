@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { CommandPalette } from "@/components/CommandPalette";
 import { AiAssistant } from "@/components/AiAssistant";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { UserMenu } from "@/components/UserMenu";
 
 const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }> = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -148,9 +149,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <div className="text-sm font-semibold text-foreground">Mehta & Associates</div>
               <div className="text-[11px] text-muted-foreground">Chartered Accountants</div>
             </div>
-            <button className="flex h-9 w-9 items-center justify-center border border-border bg-secondary text-primary hover:bg-accent hover:text-accent-foreground">
-              <UserCircle2 className="h-5 w-5" />
-            </button>
+            <UserMenu />
           </div>
         </header>
 
