@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ComplianceRow, ComplianceStatus } from "@/data/clients";
 
-export const Route = createFileRoute("/deadlines")({
+export const Route = createFileRoute("/_authenticated/deadlines")({
   head: () => ({
     meta: [
       { title: "Deadlines — Adivin" },

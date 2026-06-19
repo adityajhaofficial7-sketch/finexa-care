@@ -6,7 +6,7 @@ import { AppStoreProvider, useAppStore } from "@/store/app-store";
 import { ComplianceTable } from "@/components/ComplianceTable";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
     meta: [
       { title: "Dashboard — Adivin | Mehta & Associates" },
